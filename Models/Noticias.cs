@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using E_PlayersMVC.Interfaces;
 
 namespace E_Players_1.Models
 {
-    public class Noticias : EPlayerBase
+    public class Noticias : EPlayerBase, INoticias
     {
         public int IdNoticia { get; set; }
 
@@ -33,22 +34,22 @@ namespace E_Players_1.Models
             // formato do return
         }
 
-        public List<Equipe> ReadAll()
+        public List<Noticias> ReadAll()
         {
             //throw new NotImplementedException();
-            List<Equipe> equipes = new List<Equipe>();
+            List<Noticias> noticias = new List<Noticias>();
             string[] linhas = File.ReadAllLines(PATH);
             foreach (var item in linhas)
             {
                 string[] linha = item.Split(";");
-                Equipe equipe = new Equipe();
-                equipe.IdEquipe = Int32.Parse(linha[0]);
-                equipe.Nome = linha[1];
-                equipe.Imagem = linha[2];
+                Noticias n = new Noticias();
+                n.IdNoticia = Int32.Parse(linha[0]);
+                n.Texto = linha[1];
+                n.Imagem = linha[2];
 
-                equipes.Add(equipe);
+                noticias.Add(n);
             }
-            return equipes;
+            return noticias;
         }
 
         public void Update(Noticias n)
@@ -95,6 +96,11 @@ namespace E_Players_1.Models
                 }
             }
             //reescreve o csv (reformulaçao)
+        }
+
+        List<Noticias> INoticias.ReadAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
