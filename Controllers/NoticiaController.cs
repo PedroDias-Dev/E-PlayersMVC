@@ -24,7 +24,7 @@ namespace E_Players.Controllers
         {
             Noticias novaNoticia  = new Noticias();
             novaNoticia.IdNoticia = Int32.Parse(form["IdNoticia"]);
-            novaNoticia.Texto     = form["Texto"];
+            novaNoticia.Texto = form["Texto"];
             // upload de imagem
             //novaNoticia.Imagem    = form["Imagem"];
             var file    = form.Files[0];

@@ -30,7 +30,7 @@ namespace E_Players_1.Models
         }
 
         private string PrepararLinha(Noticias _noticia){
-            return $"{_noticia.IdNoticia};{_noticia.Titulo};{_noticia.Imagem}";
+            return $"{_noticia.IdNoticia};{_noticia.Texto};{_noticia.Imagem}";
             // formato do return
         }
 
